@@ -1,9 +1,8 @@
-Here’s a professional *GitHub README.md* for your YOLOv8 multi-object detection project — including a unique features section, usage guide, MIT license badge, and a clean markdown structure 👇
 
----
 
 `markdown
-# 🎯 Multi-Object Detection with YOLOv8
+# 🎯 NeuroView
+
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
