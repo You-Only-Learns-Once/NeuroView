@@ -1,35 +1,67 @@
-# 🚀 YOLOv8n Multi-Object Detection Project
+# 🚀 Real-Time YOLOv8 Detection Script
 
-This repository contains a lightweight, real-time multi-object detection model built using **YOLOv8 Nano (YOLOv8n)**. This project is optimized for high-speed performance on edge devices or in applications where computational resources are limited.
+This project provides a single, easy-to-use Python script (`detect.py`) for running real-time object detection using YOLOv8 models. It can process input from a webcam, video files, or static images and is highly configurable via command-line arguments.
 
-The model is trained to detect multiple custom object classes.
+[Image of detection results: A sample image with bounding boxes around detected objects like cars, people, etc.]
 
+## ✨ Key Features
 
+* **Multi-Source Input:** Works seamlessly with:
+    * Webcam (`--source 0`)
+    * Video files (`--source path/to/video.mp4`)
+    * Image files (`--source path/to/image.jpg`)
+* **Hardware Agnostic:** Automatically detects and uses your **NVIDIA GPU (CUDA)** if available, otherwise falls back to **CPU**.
+* **Auto-Model Download:** If the specified model file (e.g., `yolov8n.pt`) isn't found, the script will automatically download it.
+* **Save Results:** Easily save your detection results (annotated images or video frames) to disk using the `--save` flag.
+* **Fully Configurable:** Adjust key detection parameters from the command line:
+    * `--model`: Specify which YOLOv8 model file to use.
+    * `--conf`: Set the confidence threshold for detections.
+    * `--thickness`: Change the thickness of the bounding boxes.
+    * `--save_dir`: Specify a custom directory for saved results.
+* **Modern PyTorch Support:** Includes a built-in safety fix for loading models on **PyTorch 2.6+**.
 
-## 📋 Table of Contents
-
-* [Features](#-features)
-* [Project Structure](#-project-structure)
-* [Installation](#-installation)
-* [Usage](#-usage)
-    * [1. Dataset Preparation](#1-dataset-preparation)
-    * [2. Model Training](#2-model-training)
-    * [3. Run Inference](#3-run-inference)
-    * [4. Model Validation](#4-model-validation)
-* [Results](#-results)
-* [Contributing](#-contributing)
-* [License](#-license)
-* [Acknowledgements](#-acknowledgements)
-
-## ✨ Features
-
-* **Lightweight:** Uses the YOLOv8n (Nano) model, the smallest and fastest in the YOLOv8 family.
-* **Real-Time:** Capable of high-FPS object detection, suitable for video feeds and live cameras.
-* **Multi-Class:** Trained to detect several custom object classes simultaneously.
-    * Class 1: `[Your-Class-1]`
-    * Class 2: `[Your-Class-2]`
-    * Class 3: `[Your-Class-3]`
-    * *(Add/remove as needed)*
-* **Extensible:** Built on the `ultralytics` framework, making it easy to retrain, validate, and export.
+---
 
 ## 🗂️ Project Structure
+
+A simple and clean layout for running the script.
+
+
+## 📦 Installation
+
+1.  **Clone this repository (or just save the script):**
+    ```bash
+    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+    cd your-repo-name
+    ```
+
+2.  **Create a virtual environment (Recommended):**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
+
+3.  **Install the required packages:**
+    Create a `requirements.txt` file with the following content:
+    ```
+    ultralytics
+    torch
+    torchvision
+    opencv-python-headless
+    ```
+    Then, install them:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+---
+
+## ▶️ How to Use
+
+All commands are run from your terminal. The script will automatically find the best model weights (`best.pt`) from your training runs.
+
+### 1. Run on a Webcam
+This is the default action. It will use `yolov8n.pt` and a confidence of `0.25`.
+
+```bash
+python detect.py
